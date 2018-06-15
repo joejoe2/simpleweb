@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<style>
+	body{background-color: black;min-width: 1000px;max-width: 1300px}
+	div{margin: 1%;width: 50px;height: 50px;float: left;position: relative}
+	div:hover{ margin: 1%;width: 60px;height: 60px;}
+	@keyframes k1 {
+    0%   {left:0px; top:0px;}
+    25%  {left:800px; top:0px;}
+    50%  {left:450px; top:145px;}
+    75%  {left:825px; top:150px;}
+    100% {left:550px; top:0px;}
+    }
+	@keyframes k2 {
+    0%   {left:0px; top:0px;}
+    25%  {left:700px; top:0px;}
+    50%  { left:500px; top:150px;}
+    75%  {left:100px; top:145px;}
+    100% {left:600px; top:0px;}
+    }
+	@keyframes k3 {
+    0%   {left:20px; top:0px;}
+    25%  {left:500px; top:60px;}
+    50%  {left:350px; top:150px;}
+    75%  {left:835px; top:50px;}
+    100% {left:600px; top:150px;}
+    }
+	@keyframes k4 {
+    0%   {left:30px; top:30px;}
+    25%  {left:520px; top:80px;}
+    50%  {left:90px; top:150px;}
+    75%  {left:700px; top:90px;}
+    100% {left:50px; top:150px;}
+    }
+	@keyframes k5 {
+    0%   {left:5px; top:0px;}
+    25%  {left:160px; top:30px;}
+    50%  {left:50px; top:60px;}
+    75%  {left:750px; top:150px;}
+    100% {left:350px; top:150px;}
+    }
+	</style>
+</head>
+<body>
+<p>
+<pre style="color: white">click to score! red+10 green+0 purole+3 white+0 yellow-5 blue-10
+</pre>
+</p>
+	<p id="property" style="color: white">name: mode:</p>
+	<p id="score" style="color: white">score:0</p>
+<p id="timer" style="color: white">time:60</p>
+	<div id="1" style="background-color: blue ; animation: k1 9s ease-in 2s infinite alternate "></div>
+	<div id="2" style="background-color: blue ; animation: k2 15s ease-out 2s infinite alternate "></div>
+	<div id="3" style="background-color: blue ; animation: k3 7s linear 2s infinite alternate-reverse "></div>
+	<div id="4" style="background-color: blue ; animation: k4 8s ease-in-out 2s infinite alternate "></div>
+	<div id="5" style="background-color: blue ; animation: k5 10s ease 2s infinite alternate-reverse "></div>
+	<div style="clear: left;width: 0px;height: 0px;margin: 0%"></div>
+	<div id="6" style="background-color: blue ; animation: k3 7s ease 2s infinite alternate-reverse "></div>
+	<div id="7" style="background-color: blue ; animation: k5 8s ease-out 5s infinite alternate "></div>
+	<div id="8" style="background-color: blue ; animation: k1 10s linear 2s infinite alternate "></div>
+	<div id="9" style="background-color: blue ; animation: k4 9s ease-in 5s infinite alternate-reverse "></div>
+	<div id="10" style="background-color: blue ; animation: k2 15s ease-in-out 2s infinite alternate "></div>
+	<div style="clear: left;width: 0px;height: 0px;margin: 0%"></div>
+	<div id="11" style="background-color: blue ; animation: k4 15s ease-in-out 2s infinite alternate "></div>
+	<div id="12" style="background-color: blue ; animation: k5 8s ease-out 2s infinite alternate-reverse "></div>
+	<div id="13" style="background-color: blue ; animation: k1 10s linear 2s infinite alternate-reverse "></div>
+	<div id="14" style="background-color: blue ; animation: k3 9s ease-in 2s infinite alternate "></div>
+	<div id="15" style="background-color: blue ; animation: k2 7s linear 2s infinite alternate-reverse "></div>
+	<div style="clear: left;width: 0px;height: 0px;margin: 0%"></div>
+	<div id="16" style="background-color: blue ; animation: k5 7s ease-in 5s infinite alternate "></div>
+	<div id="17" style="background-color: blue ; animation: k1 15s ease-out 2s infinite alternate "></div>
+	<div id="18" style="background-color: blue ; animation: k2 8s ease 2s infinite alternate-reverse "></div>
+	<div id="19" style="background-color: blue ; animation: k4 9s ease-out 2s infinite alternate-reverse "></div>
+	<div id="20" style="background-color: blue ; animation: k3 10s ease 5s infinite alternate "></div>
+	<div style="clear: left;width: 0px;height: 0px;margin: 0%"></div>
+	<div id="21" style="background-color: blue ; animation: k2 9s ease 2s infinite alternate "></div>
+	<div id="22" style="background-color: blue ; animation: k1 8s ease-out 5s infinite alternate-reverse "></div>
+	<div id="23" style="background-color: blue ; animation: k4 7s ease-in 5s infinite alternate "></div>
+	<div id="24" style="background-color: blue ; animation: k3 15s ease-in 5s infinite alternate-reverse "></div>
+	<div id="25" style="background-color: blue ; animation: k5 10s linear 2s infinite alternate "></div>
+	<div style="clear: left;width: 0px;height: 0px;margin: 0%"></div>
+	<audio src="08. spinal swan coaster III.mp3" hidden="true" autoplay></audio>
+</body>
+	<script>
+	let t=60;
+	let s=0;
+	let arr=["white","green","purple","red","yellow","blue","black"];
+	let arr2=[0,1,3,10,-5,-10];
+	let max=6;
+	let time=1000;
+		let audio=new Audio();
+		audio.src="button-13.mp3";audio.load();
+	function set(){
+	for(let i=0;i<25;i++){
+	let obj=document.getElementById(i+1);
+	let c=Math.floor(Math.random()*max);
+	obj.style.backgroundColor=arr[c];
+	}
+	}
+	function timer(){
+	    if(t==0)
+		{//document.write("end");
+		 clearInterval(interval1);clearInterval(interval2);
+		
+		$.ajax({
+		url:"handler.php",
+		data:{
+		 "name":name,
+		 "mode":mode,
+		 "score":s
+		},
+		type:"POST",
+			dataType:"text",
+			
+			success:function(msg){
+				document.write(msg);
+			},
+			error:function(x,o,e){
+				alert(x+o+e);
+			}
+		});
+				 
+		 return;}
+		t-=1;
+		document.getElementById("timer").textContent="time:"+t;
+		//set();
+	}
+	function cal(event){
+		let t=event.target;
+		audio.play();
+		if(t.style.backgroundColor==arr[0]){s+=arr2[0];}
+		if(t.style.backgroundColor==arr[1]){s+=arr2[1];}
+		if(t.style.backgroundColor==arr[2]){s+=arr2[2];}
+		if(t.style.backgroundColor==arr[3]){s+=arr2[3];}
+		if(t.style.backgroundColor==arr[4]){s+=arr2[4];}
+		if(t.style.backgroundColor==arr[5]){s+=arr2[5];}
+		if(s<0){s=0;}
+		t.style.backgroundColor="black";
+		document.getElementById("score").textContent="score:"+s;
+		
+	} 
+	let url=new URL(location.href);
+	let name=url.searchParams.get("name");
+	let mode=url.searchParams.get("mode");
+	document.getElementById("property").textContent="name:"+name+"  mode:"+mode;
+	if(mode==="hard"){max=7;time=500;}
+	for(let i=0;i<25;i++){
+	let obj=document.getElementById(i+1);
+	if(mode==="easy"){obj.style="animation:paused";}
+	obj.addEventListener("click",cal);
+	}
+	set();
+	let interval1=setInterval(timer,1000);
+	let interval2=setInterval(set,time);
+	</script>
+</html>
